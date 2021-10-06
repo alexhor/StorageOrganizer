@@ -1,8 +1,131 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+/* search */
+.search-container {
+	position: relative;
+
+	.search {
+		position: relative;
+
+		.fa-search {
+			position: absolute;
+			z-index: 1;
+			top: 0px;
+			left: 6px;
+		}
+	}
+
+	.search-suggestions {
+		display: inline-block;
+		position: absolute;
+		top: 32px;
+		left: 2px;
+		z-index: 2;
+	}
+
+	.search-suggestions > .suggestion {
+		z-index: 2;
+		cursor: pointer;
+		background-color: rgba(240, 240, 240, 1);
+		padding: 3px 10px;
+	}
+
+	.search-suggestions > .suggestion:focus, .search-suggestions > .suggestion:hover, .search-suggestions > .suggestion:active {
+		background-color: rgba(201, 201, 201, 1);
+	}
+
+	.search-suggestions > .suggestion:last-child {
+		border-radius: 0 0 4px 4px;
+	}
+
+	input[type='search'] {
+		padding: 5px 25px;
+		transition: width 0.5s;
+		min-width: 250px;
+		position: relative;
+	}
+
+	input[type='search'] + .abort {
+		display: none;
+		opacity: 0;
+		transition: opacity 0.5s;
+		background-size: 100%;
+		position: absolute;
+		top: 1px;
+		right: 11px;
+		cursor: pointer;
+	}
+
+	input[type='search'].searching + .abort {
+		display: inline;
+		opacity: 0.5;
+	}
+
+	input[type='search'].searching + .abort:hover, input[type='search'].searching + .abort:focus, input[type='search'].searching + .abort:active {
+		opacity: 0.8;
+	}
+
+	.search-suggestion-container {
+		position: absolute;
+		border-top: 1px solid $box-shadow;
+		margin-top: -3px;
+
+		.suggestion {
+			transition: background-color 0.3s;
+			background-color: $background-dark;
+			padding: 2px 3px;
+			border-bottom: 1px solid $box-shadow;
+			cursor: pointer;
+			min-width: 200px;
+		}
+
+		.suggestion:focus, .suggestion:hover, .suggestion:active {
+			background-color: $background-darker;
+		}
+	}
+}
+/* end of search */
+
+
+/* hidden entities */
+.item-list-container {
+  .item {
+  	display: inline-block;
+  	margin: 5px;
+  	background-color: rgba(240, 240, 240, 0.9);
+  	line-height: 18px;
+  }
+
+  .item > * {
+  	display: inline-block;
+  	height: 23px;
+  	padding: 1px 7px 0;
+  }
+
+  .item > .name {
+  	display: inline-block;
+  }
+
+  .item > .remove {
+  	border-left: 1px solid grey;
+  	font-weight: bold;
+  	z-index: 10;
+  	cursor: pointer;
+  	border-radius: 0 5px 5px 0;
+  }
+
+  .item > .remove:focus, .item > .remove:hover, .item > .remove:active {
+  	background-color: rgba(201, 201, 201, 1);
+  }
+}
+/* end of hidden entities */

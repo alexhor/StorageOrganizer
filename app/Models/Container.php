@@ -15,4 +15,12 @@ class Container extends Model
     protected $casts = [
       'status' => ContainerStatus::class,
     ];
+
+    public function packlistList() {
+      return $this->belongsToMany(Packlist::class, 'packlist_containers', 'container_id', 'packlist_id');
+    }
+
+    public function equals(Container $container) {
+      return $this->id == $container->id;
+    }
 }

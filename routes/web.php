@@ -53,9 +53,10 @@ Route::get('/location/{location}/path', [\App\Http\Controllers\LocationControlle
 Route::resource('packlist', \App\Http\Controllers\PacklistController::class);
 Route::get('/packlist/create/{packlistTemplate}', [\App\Http\Controllers\PacklistController::class, 'createFromTemplate'])->name('packlist.create.from.template');
 Route::post('/packlist/{packlist}/container/{container}', [\App\Http\Controllers\PacklistController::class, 'addContainer'])->name('packlist.add.container');
-Route::post('/packlist/{packlist}/container/{container}/update', [\App\Http\Controllers\PacklistController::class, 'updateContainer'])->name('packlist.update.container');
 Route::delete('/packlist/{packlist}/container/{container}', [\App\Http\Controllers\PacklistController::class, 'deleteContainer'])->name('packlist.delete.container');
-Route::get('/packlist/{packlist}/container', [\App\Http\Controllers\PacklistController::class, 'getContainerList'])->name('packlist.get.container');
+Route::get('/packlist/{packlist}/container', [\App\Http\Controllers\PacklistController::class, 'getContainerListAsJson'])->name('packlist.get.container');
+Route::get('/packlist/{packlist}/container/{searchString}', [\App\Http\Controllers\PacklistController::class, 'getContainerSuggestionList'])->name('packlist.search.container');
+Route::get('/packlist/{packlist}/pack', [\App\Http\Controllers\PacklistController::class, 'pack'])->name('packlist.pack');
 
 // PacklistTemplate
 Route::resource('packlist-template', \App\Http\Controllers\PacklistTemplateController::class);
