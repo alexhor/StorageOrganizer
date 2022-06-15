@@ -10,6 +10,6 @@ class PagesController extends Controller
      * Main homepage
      */
     public function home() {
-      return view('pages.home')->with('containerList', \App\Models\Container::All());
+      return view('pages.home');
     }
 }

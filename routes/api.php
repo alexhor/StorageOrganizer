@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Container;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+*/
+
+// Containers
+Route::get('containers', function() {
+  return Containers::all();
+});
+
+Route::get('containers/{id}', function($id) {
+  return Container::find($id);
 });

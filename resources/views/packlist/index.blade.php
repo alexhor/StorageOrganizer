@@ -17,7 +17,7 @@
         @foreach ($packlistList as $packlist)
           <tr>
             <td><a href="{{ route('packlist.show', ['packlist' => $packlist]) }}">{{ $packlist->title }}</a></td>
-            <td>{{ $packlist->status }}</td>
+            <td class="alert @if ($packlist->status->in([\App\Enums\PacklistStatus::Created, \App\Enums\PacklistStatus::Packing])) alert-primary @elseif ($packlist->status->in([\App\Enums\PacklistStatus::Packed, \App\Enums\PacklistStatus::Checked, \App\Enums\PacklistStatus::Returned])) alert-success @elseif ($packlist->status->is(\App\Enums\PacklistStatus::Touring)) alert-info @elseif ($packlist->status->is(\App\Enums\PacklistStatus::Finished)) alert-secondary @else alert-danger @endif">{{ $packlist->status->description }}</td>
             <td>
               @include('packlist.actions')
             </td>
